@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>add event</title>
+</head>
+<body>
+<div class="container">
+    <h3>adding event</h3>
+    <form th:fragment="event" method="post" th:action="@{/event/add}" th:object="${event}">
+        <div class="form-group">
+            <label for="eventTitle">event title</label>
+            <input type="text" class="form-control" id="eventTitle" placeholder="event title here">
+        </div>
+        <button type="submit" class="btn btn-primary">add</button>
+    </form>
+</div>
+
+
+</body>
+</html>

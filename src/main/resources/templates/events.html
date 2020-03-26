@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<body>
+<h3>events</h3>
+<a href="add_event">add event</a>
+<a href="view">view</a>
+
+<div class="container">
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">event title</th>
+            <th scope="col">event location</th>
+            <th scope="col">event date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event, state : ${events}">
+            <th scope="row" th:utext="${state.count}"></th>
+            <td th:utext="${event.eventTitle}"></td>
+            <td th:utext="${event.eventLocation}"></td>
+            <td th:utext="${event.eventDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
