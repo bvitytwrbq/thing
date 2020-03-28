@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title> location adding </title>
+<head th:replace="base :: head(~{::title})">
+    <title> adding locations </title>
 </head>
 <body>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/"> gromt </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</header>
 <div class="container">
+
     <h3> adding location </h3>
     <form th:fragment="location" method="post" th:action="@{/location/add}" th:object="${location}">
         <div class="form-group">
