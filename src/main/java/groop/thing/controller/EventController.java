@@ -35,11 +35,15 @@ public class EventController {
         return "redirect:/event/add";
     }
 
-
     @RequestMapping(value = "/show")
     public String showData(Model model){
         model.addAttribute("events", eventRepository.findAll());
         return "events";
+    }
+
+    @RequestMapping(value = "/events")
+    public String returnToEvents(Model model){
+        return "redirect:/events";
     }
 
 }

@@ -4,7 +4,11 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Event {
@@ -14,12 +18,16 @@ public class Event {
     @GenericGenerator(name = "increment",strategy = "increment")
     private int id;
 
+
     private String eventTitle;
 
     private String eventLocation;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime eventDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate eventDate;
+
+/*    @ManyToMany(mappedBy = "events")
+    private List<Event> locations = new ArrayList<>();*/
 
 
     public int getId() {
@@ -46,11 +54,19 @@ public class Event {
         this.eventLocation = eventLocation;
     }
 
-    public LocalDateTime getEventDate() {
+    public LocalDate getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(LocalDateTime eventDate) {
+    public void setEventDate(LocalDate eventDate) {
         this.eventDate = eventDate;
     }
+
+/*    public List<Event> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Event> locations) {
+        this.locations = locations;
+    }*/
 }

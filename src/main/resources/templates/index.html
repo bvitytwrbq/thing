@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>balls</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: head(~{::title})">
+    <title> gromt </title>
 </head>
 <body>
-<a href="view">view</a>
+<div class="container">
+    <form th:fragment="index" method="get" th:action="@{/view}" th:object="${view}">
+        <button type="submit" class="btn btn-primary"> viewing</button>
+    </form>
+    <form th:fragment="index" method="get" th:action="@{/add}" th:object="${view}">
+        <button type="submit" class="btn btn-primary"> adding</button>
+    </form>
+    <form th:fragment="index" method="get" th:action="@{/edit}" th:object="${view}">
+        <button type="submit" class="btn btn-primary"> editing</button>
+    </form>
+</div>
 </body>
 </html>

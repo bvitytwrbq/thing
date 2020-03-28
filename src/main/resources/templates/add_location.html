@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> location adding </title>
+</head>
+<body>
+<div class="container">
+    <h3> adding location </h3>
+    <form th:fragment="location" method="post" th:action="@{/location/add}" th:object="${location}">
+        <div class="form-group">
+            <label for="locationCountry"> location country </label>
+            <input th:field="*{locationCountry}" type="text" class="form-control" id="locationCountry" placeholder=" location country here ">
+        </div>
+        <div class="form-group">
+            <label for="locationCity"> location city </label>
+            <input th:field="*{locationCity}" type="text" class="form-control" id="locationCity" placeholder=" location city here ">
+        </div>
+
+        <button type="submit" class="btn btn-primary"> add </button>
+    </form>
+</div>
+
+</body>
+</html>
