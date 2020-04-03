@@ -20,40 +20,4 @@ public class IndexControlller {
         return "index";
     }
 
-    @RequestMapping(value = "/view", method = RequestMethod.GET)
-    public String viewingPage() {
-        return "viewing";
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addingPage() {
-        return "adding";
-    }
-
-    @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editingPage() {
-        return "editing";
-    }
-
-    @RequestMapping(value = "/events", method = RequestMethod.GET)
-    public String eventsPage() {
-        return "events";
-    }
-
-    @RequestMapping(value = "/locations", method = RequestMethod.GET)
-    public String locationsPage(){
-        return "locations";
-    }
-
-    @RequestMapping(value = "/add_location", method = RequestMethod.GET)
-    public String addLocation(Model model) {
-        model.addAttribute("location", new Location());
-        return "add_location";
-    }
-
-    @RequestMapping(value = "/add_event", method = RequestMethod.GET)
-    public String showForm(Model model) {
-        model.addAttribute("event", new Event()); //html: th:object="${event}" -> controller: "event"
-        return "add_event";
-    }
 }

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="base :: head(~{::title})">
-    <title> gromt </title>
+    <title> events </title>
 </head>
 <body>
 <header th:fragment="header">
@@ -43,5 +44,34 @@
         </div>
     </nav>
 </header>
+
+<div class="container">
+    <h3> events </h3>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">event title</th>
+            <th scope="col">event location</th>
+            <th scope="col">event date</th>
+            <th scope="col"> editing </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event, state : ${edit_event}">
+            <th scope="row" th:utext="${state.count}"></th>
+            <td th:utext="${event.eventTitle}"></td>
+            <td th:utext="${event.eventLocation}"></td>
+            <td th:utext="${event.eventDate}"></td>
+            <td>
+                <form th:fragment="event" method="post" th:action="@{/event/delete}" th:object="${event}">
+                    <button type="submit" class="btn btn-primary"> delete </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames={"city"})})
+//@Table(uniqueConstraints={@UniqueConstraint(columnNames={"city"})})
 public class Location {
 
     @Id
@@ -17,7 +17,7 @@ public class Location {
 
     private String locationCountry;
 
-    @Column(name = "city")
+    //@Column(name = "city")
     private String locationCity;
 
 
