@@ -26,7 +26,16 @@ public class Event {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate eventDate;
 
-/*    @ManyToMany(mappedBy = "events")
+    public Event() {
+    }
+
+    public Event(String eventTitle, String eventLocation, LocalDate eventDate) {
+        this.eventTitle = eventTitle;
+        this.eventLocation = eventLocation;
+        this.eventDate = eventDate;
+    }
+
+    /*    @ManyToMany(mappedBy = "events")
     private List<Event> locations = new ArrayList<>();*/
 
 
