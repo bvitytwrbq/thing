@@ -1,0 +1,22 @@
+University
+id
+universityName
+
+@OneToMany
+students
+---------------
+Student
+id
+name
+age
+
+university
+events
+---------------
+Event
+id
+eventTitle
+eventDescription
+LocalDateTime eventStart
+
+students

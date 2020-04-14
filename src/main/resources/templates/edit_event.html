@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:for="http://www.w3.org/1999/xhtml">
 
 <head th:replace="base :: head(~{::title})">
     <title> events </title>
@@ -48,7 +48,7 @@
 <div class="container">
     <h3> events </h3>
     <form th:fragment="event" method="post" th:action="@{/event/addSome}" th:object="${event}">
-        <button type="submit" class="btn btn-primary"> add some </button>
+        <button type="submit"> add some </button>
     </form>
     <table class="table">
         <thead class="thead-light">
@@ -62,22 +62,36 @@
         </tr>
         </thead>
         <tbody>
+
         <tr th:each="event, state : ${edit_event}">
             <th scope="row" th:utext="${state.count}"></th>
-            <td th:utext="${event.id}"></td>
+            <td> <!--th:utext="${event.id}"-->
+                <form>
+                    <p th:utext="${event.id}"></p>
+                    <input>
+                </form>
+            </td>
             <td th:utext="${event.eventTitle}"></td>
             <td th:utext="${event.eventLocation}"></td>
             <td th:utext="${event.eventDate}"></td>
             <td>
                 <form th:fragment="event" method="post" th:action="@{/event/delete}" th:object="${event}">
-                    <button type="submit" class="btn btn-primary"> delete </button>
+                <button> delete </button> <textarea hidden name="id" th:utext="${event.id}"></textarea>
                 </form>
             </td>
         </tr>
         </tbody>
     </table>
+    <form th:fragment="event" method="post" th:action="@{/event/delete}" th:object="${event}">
+        <button type="submit"> delete by id </button>
+        <!--<textarea name="id" th:utext="${event.id}"></textarea>-->
+        <input name="id">
+    </form>
     <form th:fragment="event" method="post" th:action="@{/event/deleteAll}" th:object="${event}">
         <button type="submit" class="btn btn-primary"> delete all </button>
+    </form>
+    <form>
+
     </form>
 </div>
 

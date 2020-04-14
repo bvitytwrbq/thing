@@ -9,12 +9,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.Id;
 import javax.validation.Valid;
 import java.lang.ref.ReferenceQueue;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Objects;
 
 @Controller
 @RequestMapping(value = "/event")
@@ -60,23 +63,32 @@ public class EventController {
     @RequestMapping(value = "/editingPage")
     public String showDataForEditing(Model model){
         model.addAttribute("edit_event",eventRepo.findAll());
+        //model.addAttribute("edit_event",eventRepo.findById(1).get());
         return "edit_event";
     }
 
-/*    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String deleteEvent(Model model) throws NoSuchFieldException {
-
-        return "edit_event";
-    }*/
+        model.addAttribute("edit_event", eventRepo.findAll());
+        //model.getAttribute("id");
+        //eventRepo.deleteById(id);
+        return "redirect:/event/editingPage";
+    }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String deleteEventSubmit(@ModelAttribute Event event){
-        eventRepo.deleteById(event.getId());
-        return "redirect:/event/editingPage";
+    public String deleteEventSubmit(/*@ModelAttribute Event event, */@RequestParam(name = "id") int id){
+        System.out.println(eventRepo.findById(id).get().getEventTitle());
+        System.out.println(id);
+
+        eventRepo.deleteById(id);
+
+        return "redirect:/event/editingPage"; //return new ModelAndView("listr");
     }
     @RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
     public String deleteAll(){
         eventRepo.deleteAll();
         return "redirect:/event/editingPage";
     }
+
+
 }
