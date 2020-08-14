@@ -24,12 +24,6 @@ public class LocationController {
         this.locationRepo = locationRepo;
     }
 
-    /*@Autowired
-    public LocationController(EventRepo eventRepo, LocationRepo locationRepo) {
-        this.eventRepo = eventRepo;
-        this.locationRepo = locationRepo;
-    }*/
-
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showForm(Model model){
         model.addAttribute("location", new Location()); //html: th:object="${event}" -> controller: "event"
